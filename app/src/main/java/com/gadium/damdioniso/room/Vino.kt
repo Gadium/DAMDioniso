@@ -7,8 +7,7 @@ import androidx.room.PrimaryKey
 data class Vino (
     val nombre: String,
     val bodega: String,
-    val crianza: String,
-    val favorito: Boolean
+    val crianza: String
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

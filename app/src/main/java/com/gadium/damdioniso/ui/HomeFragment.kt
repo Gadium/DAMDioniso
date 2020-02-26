@@ -2,16 +2,19 @@ package com.gadium.damdioniso.ui
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.gadium.damdioniso.R
+import com.gadium.damdioniso.room.VinoDatabase
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.launch
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +32,17 @@ class HomeFragment : Fragment() {
                 HomeFragmentDirections.actionAddVino()
             Navigation.findNavController(it).navigate(action)
         }
-    }
 
+        vinosRV.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+        }
+
+        launch {
+            context?.let {
+                val vinos = VinoDatabase(it).getVinoDao().getAllVinos()
+                vinosRV.adapter = VinosAdapter(vinos)
+            }
+        }
+    }
 }

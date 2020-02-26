@@ -29,5 +29,5 @@ abstract class VinoDatabase : RoomDatabase() {
             "vinodatabase"
         ).build()
     }
-    
+
 }

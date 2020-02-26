@@ -11,8 +11,8 @@ interface VinoDao {
     @Query("SELECT * FROM vino ORDER BY id DESC")
     suspend fun getAllVinos(): List<Vino>
 
-    @Query("SELECT * FROM vino WHERE favorito LIKE 1")
-    suspend fun getAllVinosFav(): List<Vino>
+    /*@Query("SELECT * FROM vino WHERE favorito LIKE 1")
+    suspend fun getAllVinosFav(): List<Vino>*/
 
     @Insert
     suspend fun addMultipleVinos(vararg vino: Vino)
