@@ -1,10 +1,11 @@
-package com.gadium.damdioniso
+package com.gadium.damdioniso.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.gadium.damdioniso.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navController = Navigation.findNavController(this, R.id.fragment)
+        navController = Navigation.findNavController(this,
+            R.id.fragment
+        )
         NavigationUI.setupActionBarWithNavController(this, navController)
     }
 

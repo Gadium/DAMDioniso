@@ -1,4 +1,4 @@
-package com.gadium.damdioniso
+package com.gadium.damdioniso.ui
 
 
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.gadium.damdioniso.R
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -24,7 +25,8 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         buttonAdd.setOnClickListener {
-            val action = HomeFragmentDirections.actionAddVino()
+            val action =
+                HomeFragmentDirections.actionAddVino()
             Navigation.findNavController(it).navigate(action)
         }
     }

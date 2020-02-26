@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.gadium.damdioniso.HomeFragment"
+        android:name="com.gadium.damdioniso.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/addVinoFragment"
-        android:name="com.gadium.damdioniso.AddVinoFragment"
+        android:name="com.gadium.damdioniso.ui.AddVinoFragment"
         android:label="fragment_add_vino"
         tools:layout="@layout/fragment_add_vino" >
         <action

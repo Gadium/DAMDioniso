@@ -1,4 +1,4 @@
-package com.gadium.damdioniso
+package com.gadium.damdioniso.ui
 
 
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
+import com.gadium.damdioniso.R
 import kotlinx.android.synthetic.main.fragment_add_vino.*
 
 
@@ -25,7 +26,8 @@ class AddVinoFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         buttonSave.setOnClickListener {
-            val action:NavDirections = AddVinoFragmentDirections.actionSaveVino()
+            val action:NavDirections =
+                AddVinoFragmentDirections.actionSaveVino()
             Navigation.findNavController(it).navigate(action)
         }
     }
