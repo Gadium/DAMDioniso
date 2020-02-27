@@ -2,10 +2,9 @@ package com.gadium.damdioniso.ui
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import com.gadium.damdioniso.R
@@ -24,6 +23,7 @@ class AddVinoFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_add_vino, container, false)
     }
 
@@ -80,4 +80,39 @@ class AddVinoFragment : BaseFragment() {
             AddVinoFragmentDirections.actionSaveVino()
         Navigation.findNavController(buttonSave).navigate(action)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.vino_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.deleteVino -> {
+                vino?.let {
+                    deleteVino()
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteVino() {
+        context?.let{
+            AlertDialog.Builder(it).apply {
+                setTitle("¿Seguro que quiere eliminar el vino?")
+                setMessage("No podrá volver a trás")
+                setPositiveButton("OK") {
+                    dialog, which ->
+                    launch {
+                        VinoDatabase(it).getVinoDao().deleteVino(vino!!)
+                        navigateBack()
+                    }
+                }
+                setNegativeButton("Cancelar") {dialog, which ->  }
+                show()
+            }
+        }
+    }
+
 }
