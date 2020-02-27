@@ -2,7 +2,6 @@ package com.gadium.damdioniso.ui
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +17,8 @@ import kotlinx.coroutines.launch
 
 class AddVinoFragment : BaseFragment() {
 
+    private var vino: Vino? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,6 +29,13 @@ class AddVinoFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        arguments?.let {
+            vino = AddVinoFragmentArgs.fromBundle(it).vino
+            editTextNombre.setText(vino?.nombre)
+            editTextBodega.setText(vino?.bodega)
+            editTextCrianza.setText(vino?.crianza)
+        }
 
         buttonSave.setOnClickListener {
             val vinoNombre = editTextNombre.text.toString().trim()
@@ -42,9 +50,21 @@ class AddVinoFragment : BaseFragment() {
             val newVino = Vino(vinoNombre, vinoBodega, vinoCrianza)
 
             launch {
-                saveVino(newVino)
+                if(vino == null){
+                    saveVino(newVino)
+                } else {
+                    updateVino(newVino)
+                }
             }
             navigateBack()
+        }
+    }
+
+    private suspend fun updateVino (newVino: Vino) {
+        newVino.id = vino!!.id
+        context?.let {
+            VinoDatabase(it).getVinoDao().updateVino(newVino)
+            Toast.makeText(it, "Vino actualizado", Toast.LENGTH_LONG).show()
         }
     }
 
