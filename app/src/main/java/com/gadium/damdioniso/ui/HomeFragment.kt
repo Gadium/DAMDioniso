@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.gadium.damdioniso.R
 import com.gadium.damdioniso.room.VinoDatabase
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -15,6 +15,8 @@ import kotlinx.coroutines.launch
 
 
 class HomeFragment : BaseFragment() {
+
+    var isOpen = false;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,11 +29,62 @@ class HomeFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        buttonAdd.setOnClickListener {
+        val fabOpen = AnimationUtils.loadAnimation(this.context, R.anim.fab_open)
+        val fabClose = AnimationUtils.loadAnimation(this.context, R.anim.fab_close)
+        val fabRClockWise = AnimationUtils.loadAnimation(this.context, R.anim.rotate_clockwise)
+        val fabRAntiClockWise = AnimationUtils.loadAnimation(this.context, R.anim.rotate_anticlockwise)
+
+        fabAll.setOnClickListener {
+            if (isOpen) {
+                fabRed.startAnimation(fabClose)
+                fabWhite.startAnimation(fabClose)
+                fabBlue.startAnimation(fabClose)
+                fabFav.startAnimation(fabClose)
+                fabAll.startAnimation(fabRClockWise)
+
+                isOpen = false
+            }
+
+            else {
+                fabRed.startAnimation(fabOpen)
+                fabWhite.startAnimation(fabOpen)
+                fabBlue.startAnimation(fabOpen)
+                fabFav.startAnimation(fabOpen)
+                fabAll.startAnimation(fabRAntiClockWise)
+
+                fabRed.isClickable
+                fabWhite.isClickable
+                fabBlue.isClickable
+                fabFav.isClickable
+
+                isOpen = true
+            }
+
+            fabRed.setOnClickListener {
+                val action =
+                    HomeFragmentDirections.actionAddVino()
+                Navigation.findNavController(it).navigate(action)
+            }
+
+            fabFav.setOnClickListener {
+                val action =
+                    HomeFragmentDirections.actionfav()
+                Navigation.findNavController(it).navigate(action)
+            }
+
+        }
+
+        /*buttonAdd.setOnClickListener {
             val action =
                 HomeFragmentDirections.actionAddVino()
             Navigation.findNavController(it).navigate(action)
         }
+
+        buttonFav.setOnClickListener {
+            val action =
+                HomeFragmentDirections.actionfav()
+            Navigation.findNavController(it).navigate(action)
+        }*/
 
         vinosRV.apply {
             setHasFixedSize(true)

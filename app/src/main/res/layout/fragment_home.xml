@@ -15,7 +15,78 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:src="@drawable/ic_001_wine_glass"
+        app:backgroundTint="#CEDFE1"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fabAll"
+        app:layout_constraintEnd_toEndOf="@+id/fabAll"
+        app:layout_constraintStart_toStartOf="@+id/fabAll"
+        android:visibility="invisible"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:src="@drawable/ic_001_wine_glass_white"
+        app:backgroundTint="#CEDFE1"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fabRed"
+        app:layout_constraintEnd_toEndOf="@+id/fabRed"
+        app:layout_constraintStart_toStartOf="@+id/fabRed"
+        android:visibility="invisible"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:src="@drawable/ic_001_wine_glass_blue"
+        app:backgroundTint="#CEDFE1"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fabWhite"
+        app:layout_constraintEnd_toEndOf="@+id/fabWhite"
+        app:layout_constraintStart_toStartOf="@+id/fabWhite"
+        android:visibility="invisible"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:src="@drawable/ic_favorite"
+        android:tint="#E91E63"
+        app:backgroundTint="#CEDFE1"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fabBlue"
+        app:layout_constraintEnd_toEndOf="@+id/fabBlue"
+        app:layout_constraintStart_toStartOf="@+id/fabBlue"
+        android:visibility="invisible"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="55dp"
+        android:clickable="true"
+        android:src="@drawable/ic_028_wine_cask"
+        app:backgroundTint="#AFCD8C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +96,19 @@
         android:src="@drawable/ic_add"
         android:tint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:fabSize="mini"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:src="@drawable/ic_favorite"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAdd"
+        app:layout_constraintStart_toStartOf="@+id/buttonAdd"
+        app:fabSize="mini"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

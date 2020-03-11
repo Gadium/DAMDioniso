@@ -13,6 +13,9 @@
         <action
             android:id="@+id/actionAddVino"
             app:destination="@id/addVinoFragment" />
+        <action
+            android:id="@+id/actionfav"
+            app:destination="@id/favsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addVinoFragment"
@@ -27,4 +30,9 @@
                   android:defaultValue="@null"
                   app:argType="com.gadium.damdioniso.room.Vino"/>
     </fragment>
+    <fragment
+        android:id="@+id/favsFragment"
+        android:name="com.gadium.damdioniso.ui.FavsFragment"
+        android:label="fragment_favs"
+        tools:layout="@layout/fragment_favs" />
 </navigation>
