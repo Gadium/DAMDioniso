@@ -1,5 +1,6 @@
 package com.gadium.damdioniso.ui
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class VinosAdapter(val vinos: List<Vino>): RecyclerView.Adapter<VinosAdapter.Vin
         holder.view.textView.text = vinos[position].nombre
         holder.view.textView3.text = vinos[position].bodega
         holder.view.textView2.text = vinos[position].crianza
+        /*holder.view.imageView.setImageResource(R.drawable.ic_001_wine_glass_blue)*/
         holder.view.setOnClickListener {
             val action = HomeFragmentDirections.actionAddVino()
             action.vino = vinos[position]
