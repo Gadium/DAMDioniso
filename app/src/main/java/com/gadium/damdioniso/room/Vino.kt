@@ -9,12 +9,26 @@ import androidx.room.PrimaryKey
 data class Vino(
     val nombre: String?,
     val bodega: String?,
-    val crianza: String?
+    val crianza: String?,
+    val tipo: String?,
+    val uvas: String?,
+    val alcohol: String?,
+    val envejecimiento: String?,
+    val paisOrigen: String?,
+    val precio: String?,
+    val notasCata: String?
 ): Parcelable {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString()
@@ -26,6 +40,13 @@ data class Vino(
         parcel.writeString(nombre)
         parcel.writeString(bodega)
         parcel.writeString(crianza)
+        parcel.writeString(tipo)
+        parcel.writeString(uvas)
+        parcel.writeString(alcohol)
+        parcel.writeString(envejecimiento)
+        parcel.writeString(paisOrigen)
+        parcel.writeString(precio)
+        parcel.writeString(notasCata)
         parcel.writeInt(id)
     }
 

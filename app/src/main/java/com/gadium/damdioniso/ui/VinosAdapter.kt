@@ -28,6 +28,21 @@ class VinosAdapter(val vinos: List<Vino>): RecyclerView.Adapter<VinosAdapter.Vin
         holder.view.textView3.text = vinos[position].bodega
         holder.view.textView2.text = vinos[position].crianza
         /*holder.view.imageView.setImageResource(R.drawable.ic_001_wine_glass_blue)*/
+        if (vinos[position].tipo == "Tinto"){
+            holder.view.imageView.setImageResource(R.drawable.ic_001_wine_glass)
+        }
+        if (vinos[position].tipo == "Rosado"){
+            holder.view.imageView.setImageResource(R.drawable.ic_001_wine_glass_pink)
+        }
+        if (vinos[position].tipo == "Blanco"){
+            holder.view.imageView.setImageResource(R.drawable.ic_001_wine_glass_white)
+        }
+        if (vinos[position].tipo == "Azul"){
+            holder.view.imageView.setImageResource(R.drawable.ic_001_wine_glass_blue)
+        }
+        if (vinos[position].tipo == "Espumoso"){
+            holder.view.imageView.setImageResource(R.drawable.ic_001_wine_glass_white_champagne)
+        }
         holder.view.setOnClickListener {
             val action = HomeFragmentDirections.actionAddVino()
             action.vino = vinos[position]

@@ -4,4 +4,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nav">navigation</string>
+
+    <string-array name="tipo_vino">
+        <item>Tinto</item>
+        <item>Rosado</item>
+        <item>Blanco</item>
+        <item>Azul</item>
+        <item>Espumoso</item>
+    </string-array>
+
 </resources>
