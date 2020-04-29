@@ -10,11 +10,11 @@
         android:id="@+id/vinosRV"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -24,14 +24,14 @@
         android:layout_marginBottom="10dp"
         android:clickable="true"
         android:src="@drawable/ic_001_wine_glass"
-        app:backgroundTint="#CEDFE1"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorAccent"
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@+id/fabAll"
         app:layout_constraintEnd_toEndOf="@+id/fabAll"
-        app:layout_constraintStart_toStartOf="@+id/fabAll"
-        android:visibility="invisible"/>
+        app:layout_constraintStart_toStartOf="@+id/fabAll" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         app:layout_constraintBottom_toTopOf="@+id/fabWhite"
         app:layout_constraintEnd_toEndOf="@+id/fabWhite"
         app:layout_constraintStart_toStartOf="@+id/fabWhite"
-        android:visibility="invisible"/>
+        android:visibility="invisible"/>-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabFav"
@@ -67,12 +67,12 @@
         android:clickable="true"
         android:src="@drawable/ic_favorite"
         android:tint="#E91E63"
-        app:backgroundTint="#CEDFE1"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorAccent"
         app:fabSize="mini"
-        app:layout_constraintBottom_toTopOf="@+id/fabBlue"
-        app:layout_constraintEnd_toEndOf="@+id/fabBlue"
-        app:layout_constraintStart_toStartOf="@+id/fabBlue"
-        android:visibility="invisible"/>
+        app:layout_constraintBottom_toTopOf="@+id/fabRed"
+        app:layout_constraintEnd_toEndOf="@+id/fabRed"
+        app:layout_constraintStart_toStartOf="@+id/fabRed" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAll"

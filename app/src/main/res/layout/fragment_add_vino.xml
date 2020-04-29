@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.AddVinoFragment">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="55dp"
+        android:clickable="true"
+        android:src="@drawable/ic_check"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
@@ -21,11 +33,11 @@
 
             <EditText
                 android:id="@+id/editText4Alcohol"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="% Alcohol"
+                android:hint="@string/alcohol"
                 android:inputType="numberDecimal"
                 app:layout_constraintStart_toStartOf="@+id/editText2Uvas"
                 app:layout_constraintTop_toBottomOf="@+id/editText2Uvas" />
@@ -33,13 +45,13 @@
             <EditText
                 android:id="@+id/editText5Envejecimiento"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_height="50dp"
                 android:ems="10"
-                android:hint="Envejecimiento"
+                android:hint="@string/maduracion"
                 android:inputType="textPersonName"
-                app:layout_constraintStart_toStartOf="@+id/editText4Alcohol"
-                app:layout_constraintTop_toBottomOf="@+id/editText4Alcohol" />
+                app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toEndOf="@+id/textView6" />
 
             <EditText
                 android:id="@+id/editText7Precio"
@@ -47,33 +59,36 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="Precio en €"
+                android:hint="@string/precio"
                 android:inputType="numberDecimal"
                 app:layout_constraintStart_toStartOf="@+id/editText6Pais"
                 app:layout_constraintTop_toBottomOf="@+id/editText6Pais" />
 
             <EditText
                 android:id="@+id/editText8Cata"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:gravity="start|top"
+                android:hint="@string/notas_cata"
                 android:inputType="textMultiLine"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="@+id/editText7Precio"
                 app:layout_constraintTop_toBottomOf="@+id/editText7Precio" />
 
             <EditText
                 android:id="@+id/editTextNombre"
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
                 android:editable="true"
                 android:ems="10"
                 android:hint="Nombre Vino"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                app:layout_constraintStart_toEndOf="@+id/imageView3" />
+                app:layout_constraintEnd_toEndOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="@+id/imageView3"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
             <EditText
                 android:id="@+id/editTextCrianza"
@@ -82,20 +97,22 @@
                 android:layout_marginTop="10dp"
                 android:editable="true"
                 android:ems="10"
-                android:hint="Cosecha"
+                android:hint="@string/anno_cosecha"
                 android:inputType="number"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toEndOf="@+id/spinner"
+                app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
 
             <EditText
                 android:id="@+id/editText6Pais"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="País"
+                android:hint="@string/pais"
                 android:inputType="textPersonName"
-                app:layout_constraintStart_toStartOf="@+id/editText5Envejecimiento"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/editText4Alcohol"
                 app:layout_constraintTop_toBottomOf="@+id/editText5Envejecimiento" />
 
             <Spinner
@@ -104,19 +121,18 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="10dp"
                 android:entries="@array/tipo_vino"
-                app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                app:layout_constraintStart_toEndOf="@+id/textView4" />
+                app:layout_constraintBottom_toBottomOf="@+id/editTextCrianza"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="@+id/editTextCrianza" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
-                android:text="Tipo de Vino"
-                android:textAlignment="center"
-                app:layout_constraintStart_toStartOf="@+id/editTextNombre"
-                app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
+                android:text="@string/tipo_vino"
+                app:layout_constraintBottom_toBottomOf="@+id/spinner"
+                app:layout_constraintStart_toStartOf="@+id/editTextNombre" />
 
             <EditText
                 android:id="@+id/editTextBodega"
@@ -127,17 +143,19 @@
                 android:ems="10"
                 android:hint="Bodega"
                 android:inputType="textPersonName"
-                app:layout_constraintStart_toStartOf="@+id/editTextCrianza"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/textView4"
                 app:layout_constraintTop_toBottomOf="@+id/editTextCrianza" />
 
             <EditText
                 android:id="@+id/editTextDenominacion"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="Denominación Origen"
-                android:inputType="textPersonName"
+                android:inputType="text"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="@+id/editTextBodega"
                 app:layout_constraintTop_toBottomOf="@+id/editTextBodega" />
 
@@ -151,29 +169,75 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/buttonSave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="35dp"
-                android:layout_marginBottom="115dp"
-                android:clickable="true"
-                android:src="@drawable/ic_check"
-                android:tint="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
             <EditText
                 android:id="@+id/editText2Uvas"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="Uvas"
+                android:hint="@string/uvas"
                 android:inputType="textMultiLine"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="@+id/editTextDenominacion"
                 app:layout_constraintTop_toBottomOf="@+id/editTextDenominacion" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:text="@string/favorito"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/editText8Cata"
+                app:layout_constraintStart_toStartOf="@+id/editText8Cata"
+                app:layout_constraintTop_toBottomOf="@+id/editText8Cata" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/lemon"
+                android:gravity="center"
+                android:text="@string/tu_vino"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toEndOf="@+id/imageView3" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="395dp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="@string/textview_alcohol"
+                app:layout_constraintBottom_toBottomOf="@+id/editText4Alcohol"
+                app:layout_constraintStart_toEndOf="@+id/editText4Alcohol"
+                app:layout_constraintTop_toTopOf="@+id/editText4Alcohol" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="@string/euros"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/editText7Precio"
+                app:layout_constraintStart_toEndOf="@+id/editText7Precio"
+                app:layout_constraintTop_toTopOf="@+id/editText7Precio" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

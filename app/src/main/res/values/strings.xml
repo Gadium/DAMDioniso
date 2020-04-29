@@ -4,6 +4,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nav">navigation</string>
+    <string name="tu_vino">Tu Vino</string>
+    <string name="tipo_vino">Tipo</string>
+    <string name="anno_cosecha">Añada</string>
+    <string name="denominacion_origen">D. Origen</string>
+    <string name="uvas">Uvas</string>
+    <string name="alcohol" />
+    <string name="textview_alcohol">% de alcohol</string>
+    <string name="maduracion">Maduración</string>
+    <string name="pais">País de Orígen</string>
+    <string name="precio">Precio</string>
+    <string name="euros">€</string>
+    <string name="notas_cata">Notas de Cata</string>
+    <string name="favorito">Favorito</string>
+    <string name="botonNext">Siguiente</string>
 
     <string-array name="tipo_vino">
         <item>Tinto</item>

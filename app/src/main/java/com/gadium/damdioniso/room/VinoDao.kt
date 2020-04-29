@@ -11,7 +11,7 @@ interface VinoDao {
     @Query("SELECT * FROM vino ORDER BY id DESC")
     suspend fun getAllVinos(): List<Vino>
 
-    @Query("SELECT * FROM vino WHERE bodega LIKE 'bodega2'")
+    @Query("SELECT * FROM vino WHERE favorito LIKE 1")
     suspend fun getAllVinosFav(): List<Vino>
 
     @Insert

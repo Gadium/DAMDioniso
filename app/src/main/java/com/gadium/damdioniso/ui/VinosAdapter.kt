@@ -8,7 +8,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.gadium.damdioniso.R
 import com.gadium.damdioniso.room.Vino
-import kotlinx.android.synthetic.main.fragment_add_vino.view.*
 import kotlinx.android.synthetic.main.item_vino.view.*
 
 class VinosAdapter(val vinos: List<Vino>): RecyclerView.Adapter<VinosAdapter.VinoViewHolder>() {

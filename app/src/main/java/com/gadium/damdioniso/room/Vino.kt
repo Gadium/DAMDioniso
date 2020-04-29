@@ -1,7 +1,9 @@
 package com.gadium.damdioniso.room
 
+import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.annotation.RequiresApi
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -9,6 +11,7 @@ import androidx.room.PrimaryKey
 data class Vino(
     val nombre: String?,
     val bodega: String?,
+    val denominacion: String?,
     val crianza: String?,
     val tipo: String?,
     val uvas: String?,
@@ -16,11 +19,13 @@ data class Vino(
     val envejecimiento: String?,
     val paisOrigen: String?,
     val precio: String?,
-    val notasCata: String?
+    val notasCata: String?,
+    val favorito: Boolean?
 ): Parcelable {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -31,14 +36,18 @@ data class Vino(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString()
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readBoolean()
     ) {
         id = parcel.readInt()
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(nombre)
         parcel.writeString(bodega)
+        parcel.writeString(denominacion)
         parcel.writeString(crianza)
         parcel.writeString(tipo)
         parcel.writeString(uvas)
@@ -48,6 +57,9 @@ data class Vino(
         parcel.writeString(precio)
         parcel.writeString(notasCata)
         parcel.writeInt(id)
+        if (favorito != null) {
+            parcel.writeBoolean(favorito)
+        }
     }
 
     override fun describeContents(): Int {
@@ -55,6 +67,7 @@ data class Vino(
     }
 
     companion object CREATOR : Parcelable.Creator<Vino> {
+        @RequiresApi(Build.VERSION_CODES.Q)
         override fun createFromParcel(parcel: Parcel): Vino {
             return Vino(parcel)
         }

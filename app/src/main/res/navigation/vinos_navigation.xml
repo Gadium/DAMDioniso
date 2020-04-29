@@ -34,5 +34,9 @@
         android:id="@+id/favsFragment"
         android:name="com.gadium.damdioniso.ui.FavsFragment"
         android:label="fragment_favs"
-        tools:layout="@layout/fragment_favs" />
+        tools:layout="@layout/fragment_favs" >
+        <action
+            android:id="@+id/actionAddVino"
+            app:destination="@id/addVinoFragment" />
+    </fragment>
 </navigation>

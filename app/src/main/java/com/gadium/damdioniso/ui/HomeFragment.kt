@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gadium.damdioniso.R
@@ -29,6 +30,9 @@ class HomeFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        (activity as AppCompatActivity).supportActionBar?.title = "Dioniso - Proyecto DAM"
+
+
         val fabOpen = AnimationUtils.loadAnimation(this.context, R.anim.fab_open)
         val fabClose = AnimationUtils.loadAnimation(this.context, R.anim.fab_close)
         val fabRClockWise = AnimationUtils.loadAnimation(this.context, R.anim.rotate_clockwise)
@@ -37,8 +41,8 @@ class HomeFragment : BaseFragment() {
         fabAll.setOnClickListener {
             if (isOpen) {
                 fabRed.startAnimation(fabClose)
-                fabWhite.startAnimation(fabClose)
-                fabBlue.startAnimation(fabClose)
+                //fabWhite.startAnimation(fabClose)
+                //fabBlue.startAnimation(fabClose)
                 fabFav.startAnimation(fabClose)
                 fabAll.startAnimation(fabRClockWise)
 
@@ -47,14 +51,14 @@ class HomeFragment : BaseFragment() {
 
             else {
                 fabRed.startAnimation(fabOpen)
-                fabWhite.startAnimation(fabOpen)
-                fabBlue.startAnimation(fabOpen)
+                //fabWhite.startAnimation(fabOpen)
+                //fabBlue.startAnimation(fabOpen)
                 fabFav.startAnimation(fabOpen)
                 fabAll.startAnimation(fabRAntiClockWise)
 
                 fabRed.isClickable
-                fabWhite.isClickable
-                fabBlue.isClickable
+                //fabWhite.isClickable
+                //fabBlue.isClickable
                 fabFav.isClickable
 
                 isOpen = true

@@ -1,10 +1,12 @@
 package com.gadium.damdioniso.ui
 
+import android.app.ActionBar
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gadium.damdioniso.R
 import com.gadium.damdioniso.room.VinoDatabase
@@ -26,6 +28,8 @@ class FavsFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        (activity as AppCompatActivity).supportActionBar?.title ="Mis Vinos Favoritos"
 
         favsRV.apply {
             setHasFixedSize(true)
