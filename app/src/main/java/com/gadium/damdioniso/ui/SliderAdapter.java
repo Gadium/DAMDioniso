@@ -12,6 +12,9 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.gadium.damdioniso.R;
 
+/**
+ * Esta clase gestiona las tres imágenes que se pueden pasar en el WelcomeActivity
+ */
 public class SliderAdapter extends PagerAdapter {
 
     Context context;
@@ -21,6 +24,7 @@ public class SliderAdapter extends PagerAdapter {
         this.context = context;
     }
 
+    //Las tres imágenes del splas screen
     public int[] slide_images = {R.drawable.primera, R.drawable.segunda, R.drawable.tercera};
 
     @Override

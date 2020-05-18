@@ -7,6 +7,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * Clase que gestiona el funcionamiento de los fragments en la aplicación
+ */
 abstract class BaseFragment: Fragment(), CoroutineScope {
 
     private lateinit var job: Job

@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import com.gadium.damdioniso.R
@@ -17,7 +18,9 @@ import kotlinx.coroutines.launch
 import com.gadium.damdioniso.utilities.FiltradoMinMax
 import java.util.*
 
-
+/**
+ * Clase que gestiona el Fragment desde el que añadimos o modificamos un vino
+ */
 class AddVinoFragment : BaseFragment() {
 
     private var vino: Vino? = null
@@ -34,12 +37,15 @@ class AddVinoFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //Seteamos el título de la barra superior
         (activity as AppCompatActivity).supportActionBar?.title ="Crea tu vino"
 
+        //Mostramos los valores del spinner del tipo de vino
         val adapter = ArrayAdapter.createFromResource(this.requireContext(), R.array.tipo_vino, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
+        //Estos datos se muestran en la vista cuando pinchamos en un vino de la lista
         arguments?.let {
             vino = AddVinoFragmentArgs.fromBundle(it).vino
             var tipoVino: Int = 0
@@ -64,14 +70,11 @@ class AddVinoFragment : BaseFragment() {
             editTextBodega.setText(vino?.bodega)
             if (vino?.crianza != null){
                 editTextCrianza.setText(vino?.crianza)
-            } else {
+            } else { //De esta manera vamos a evitar que en una primera entrada de datos podamos introducir un año superior al actual
                 editTextCrianza.filters = arrayOf(FiltradoMinMax(1,Calendar.getInstance().get(Calendar.YEAR)))
             }
-            //editTextCrianza.setText(vino?.crianza)
-            //editTextCrianza.filters = arrayOf(FiltradoMinMax(1,Calendar.getInstance().get(Calendar.YEAR)))
             editText2Uvas.setText(vino?.uvas)
             editText4Alcohol.setText(vino?.alcohol)
-            //editText4Alcohol.filters = arrayOf(FiltradoMinMax(0,100))
             editTextDenominacion.setText(vino?.denominacion)
             editText5Envejecimiento.setText(vino?.envejecimiento)
             editText6Pais.setText(vino?.paisOrigen)
@@ -84,6 +87,7 @@ class AddVinoFragment : BaseFragment() {
 
         }
 
+        //Recogemos y salvamos los datos introducidos
         buttonSave.setOnClickListener {
             val vinoNombre = editTextNombre.text.toString().trim()
             val vinoBodega = editTextBodega.text.toString().trim()
@@ -98,23 +102,28 @@ class AddVinoFragment : BaseFragment() {
             val vinoNotasCata = editText8Cata.text.toString().trim()
             val vinoFavorito = checkBox.isChecked
 
+            //No podremos guardar un vino si no tiene nombre. Lo controlamos con este if
             if(vinoNombre.isNullOrEmpty()){
                 editTextNombre.error="Nombre requerido"
                 return@setOnClickListener
             }
 
+            //No podremos introducir un porcentaje de alcohol superior al 100%. Lo controlamos con este if
             if(vinoAlcohol.isNotEmpty() && vinoAlcohol.toFloat()>100.0){
                 editText4Alcohol.error="Menos de 100"
                 return@setOnClickListener
             }
 
+            //No podremos introducir un año de cosecha superior al año actual. Lo controlamos comparándolo con el año actual
             if(vinoCrianza.isNotEmpty() && vinoCrianza.toInt()>(Calendar.getInstance().get(Calendar.YEAR))){
                 editTextCrianza.error="El máximo es " + Calendar.getInstance().get(Calendar.YEAR)
                 return@setOnClickListener
             }
 
+            //Creamos el objeto vino con sus atributos
             val newVino = Vino(vinoNombre, vinoBodega, vinoDenominacion, vinoCrianza, vinoTipo, vinoUvas, vinoAlcohol, vinoEnvejecimiento, vinoPaisOrigen, vinoPrecio, vinoNotasCata, vinoFavorito)
 
+            // Creamos un vino nuevo o actualizamos uno ya existente
             launch {
                 if(vino == null){
                     saveVino(newVino)
@@ -126,6 +135,11 @@ class AddVinoFragment : BaseFragment() {
         }
     }
 
+
+
+    /**
+     * Actualizamos un vino recibido por parámetro
+     */
     private suspend fun updateVino (newVino: Vino) {
         newVino.id = vino!!.id
         context?.let {
@@ -134,6 +148,9 @@ class AddVinoFragment : BaseFragment() {
         }
     }
 
+    /**
+     * Guardamos un vino nuevo recibido por parámetro
+     */
     private suspend fun saveVino(vino: Vino) {
         context?.let {
             VinoDatabase(it).getVinoDao().addVino(vino)
@@ -141,17 +158,26 @@ class AddVinoFragment : BaseFragment() {
         }
     }
 
+    /**
+     * Función con la que regresamos al HomeFragment tras guardar o actualizar un vino
+     */
     private fun navigateBack() {
         val action:NavDirections =
             AddVinoFragmentDirections.actionSaveVino()
         Navigation.findNavController(buttonSave).navigate(action)
     }
 
+    /**
+     * Función con la que creamos el menú del action bar
+     */
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.vino_menu, menu)
     }
 
+    /**
+     * Función con la que añadimos el icono de eliminar vino en el action bar
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.deleteVino -> {
@@ -163,6 +189,9 @@ class AddVinoFragment : BaseFragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * Función con la que eliminamos el vino que estamos visualizando
+     */
     private fun deleteVino() {
         context?.let{
             AlertDialog.Builder(it).apply {

@@ -4,6 +4,10 @@ import android.text.InputFilter
 import android.text.Spanned
 import java.lang.NumberFormatException
 
+/**
+ * Clase con la que vamos a controlar que con el teclado podamos introducir un número o no. Según usemos un constructor u otro pasaremos dos enteros o dos cadenas que
+ * se convertirán a enteros.
+ */
 class FiltradoMinMax: InputFilter {
 
     private var min:Int = 0

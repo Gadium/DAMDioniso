@@ -14,9 +14,12 @@ import com.gadium.damdioniso.room.VinoDatabase
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
 
-
+/**
+ * Clase correspondiente al fragment principal en el que se muestra la lista de vinos
+ */
 class HomeFragment : BaseFragment() {
 
+    //boolean para controlar el estado del botón que encierra a los dos botones
     var isOpen = false;
 
     override fun onCreateView(
@@ -30,9 +33,10 @@ class HomeFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //Seteamos el título en el action bar
         (activity as AppCompatActivity).supportActionBar?.title = "Dioniso - Proyecto DAM"
 
-
+        //Cargamos en los botones las animaciones que hemos creado en res/anim
         val fabOpen = AnimationUtils.loadAnimation(this.context, R.anim.fab_open)
         val fabClose = AnimationUtils.loadAnimation(this.context, R.anim.fab_close)
         val fabRClockWise = AnimationUtils.loadAnimation(this.context, R.anim.rotate_clockwise)
@@ -41,8 +45,6 @@ class HomeFragment : BaseFragment() {
         fabAll.setOnClickListener {
             if (isOpen) {
                 fabRed.startAnimation(fabClose)
-                //fabWhite.startAnimation(fabClose)
-                //fabBlue.startAnimation(fabClose)
                 fabFav.startAnimation(fabClose)
                 fabAll.startAnimation(fabRClockWise)
 
@@ -51,14 +53,10 @@ class HomeFragment : BaseFragment() {
 
             else {
                 fabRed.startAnimation(fabOpen)
-                //fabWhite.startAnimation(fabOpen)
-                //fabBlue.startAnimation(fabOpen)
                 fabFav.startAnimation(fabOpen)
                 fabAll.startAnimation(fabRAntiClockWise)
 
                 fabRed.isClickable
-                //fabWhite.isClickable
-                //fabBlue.isClickable
                 fabFav.isClickable
 
                 isOpen = true
@@ -77,18 +75,6 @@ class HomeFragment : BaseFragment() {
             }
 
         }
-
-        /*buttonAdd.setOnClickListener {
-            val action =
-                HomeFragmentDirections.actionAddVino()
-            Navigation.findNavController(it).navigate(action)
-        }
-
-        buttonFav.setOnClickListener {
-            val action =
-                HomeFragmentDirections.actionfav()
-            Navigation.findNavController(it).navigate(action)
-        }*/
 
         vinosRV.apply {
             setHasFixedSize(true)

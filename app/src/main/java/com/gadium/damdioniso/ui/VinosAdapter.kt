@@ -10,6 +10,9 @@ import com.gadium.damdioniso.R
 import com.gadium.damdioniso.room.Vino
 import kotlinx.android.synthetic.main.item_vino.view.*
 
+/**
+ * Clase con la que gestionamos la lista de vinos que se muestran en el HomeFragment
+ */
 class VinosAdapter(val vinos: List<Vino>): RecyclerView.Adapter<VinosAdapter.VinoViewHolder>() {
 
     class VinoViewHolder(val view: View) : RecyclerView.ViewHolder(view)
@@ -22,11 +25,13 @@ class VinosAdapter(val vinos: List<Vino>): RecyclerView.Adapter<VinosAdapter.Vin
 
     override fun getItemCount() = vinos.size
 
+    //Mostramos los datos en la lista
     override fun onBindViewHolder(holder: VinoViewHolder, position: Int) {
         holder.view.textView.text = vinos[position].nombre
         holder.view.textView3.text = vinos[position].bodega
         holder.view.textView2.text = vinos[position].crianza
-        /*holder.view.imageView.setImageResource(R.drawable.ic_001_wine_glass_blue)*/
+
+        //En función del tipo de vino mostraremos un icono que lo identifique
         if (vinos[position].tipo == "Tinto"){
             holder.view.imageView.setImageResource(R.drawable.ic_001_wine_glass)
         }

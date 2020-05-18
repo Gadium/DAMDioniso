@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/actionAddVino"
-            app:destination="@id/addVinoFragment" />
+            app:destination="@id/addVinoFragment"/>
         <action
             android:id="@+id/actionfav"
             app:destination="@id/favsFragment" />
@@ -21,10 +21,12 @@
         android:id="@+id/addVinoFragment"
         android:name="com.gadium.damdioniso.ui.AddVinoFragment"
         android:label="fragment_add_vino"
-        tools:layout="@layout/fragment_add_vino" >
+        tools:layout="@layout/fragment_add_vino">
         <action
             android:id="@+id/actionSaveVino"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"/>
         <argument android:name="vino"
                   app:nullable="true"
                   android:defaultValue="@null"

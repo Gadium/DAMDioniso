@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import com.gadium.damdioniso.R;
 
+/**
+ * Clase que gestiona el splash screen de la aplicación. Este SplashScreen se mostrará sólo la primera vez que se ejecute la aplicación
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
@@ -32,9 +35,11 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        //Usamos SharedPreferences para almacenar una bandera con la que controlar que el splash screen sólo se muestra la primera vez que ejecutamos la app
         sharedPreferences = getSharedPreferences("MyPrefs",MODE_PRIVATE);
         firstTime = sharedPreferences.getBoolean("firstTime",true);
 
+        //Si es la primera ejecución se muestra el splash screen
         if (firstTime){
         welcomeViewPager = (ViewPager) findViewById(R.id.slideViewPager);
         welcomeDotsLayout = (LinearLayout) findViewById(R.id.dotsLayout);
@@ -61,6 +66,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                     startActivity(intent);
+                    finish();
                 }
                 else {
                     welcomeViewPager.setCurrentItem(currentPage+1);}
@@ -74,12 +80,17 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });}
 
+        //Si no es la primera ejecución entonces pasamos directamente a mostrar la lista de vinos
         else{Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
         startActivity(intent);
         finish();}
 
     }
 
+    /**
+     * Función para gestionar los indicadores de la página del Splash Screen
+     * @param position Recibe por parámetro la posición de la página
+     */
     public void addDotsIndicator(int position){
         dots = new TextView[3];
         welcomeDotsLayout.removeAllViews();
@@ -104,6 +115,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
         }
 
+        /**
+         * Función que gestiona el estado de los botones de Atrás y Siguiente del splash screen
+         * @param position Recibe por parámetro la posición de la página
+         */
         @Override
         public void onPageSelected(int position) {
 

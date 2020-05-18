@@ -7,6 +7,9 @@ import androidx.annotation.RequiresApi
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Entidad Vino del modelo de datos
+ */
 @Entity
 data class Vino(
     val nombre: String?,
@@ -21,7 +24,7 @@ data class Vino(
     val precio: String?,
     val notasCata: String?,
     val favorito: Boolean?
-): Parcelable {
+): Parcelable { //el atributo id, Primary Key de nuestra tabla, lo sacamos del constructor porque se va a autogenerar al crearse
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 

@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_favs.*
 import kotlinx.coroutines.launch
 
 /**
- * A simple [Fragment] subclass.
+ * Clase correspondiente al fragmento que muestra los vinos favoritos
  */
 class FavsFragment : BaseFragment() {
 
@@ -29,6 +29,7 @@ class FavsFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //Seteamos el título en el action bar
         (activity as AppCompatActivity).supportActionBar?.title ="Mis Vinos Favoritos"
 
         favsRV.apply {
